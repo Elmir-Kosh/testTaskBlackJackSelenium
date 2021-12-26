@@ -1,6 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class NewGamePage extends BasePage {
 
@@ -23,12 +29,7 @@ public class NewGamePage extends BasePage {
     }
 
     public NewGamePage clickDealerMod(Cards cardName)  {
-        click(By.xpath(cardName.getName()));
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cardName.getName()))).click();
         return this;
     }
 }
